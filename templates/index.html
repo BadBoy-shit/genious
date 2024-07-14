@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чудеса света</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Добавлен фон для страницы */
+        }
+        .main_first_sec {
+            text-align: left; /* Выравнивание текста слева */
+            margin: 20px 0;
+        }
+        .main_first_sec_h1 {
+            font-size: 96px; /* Увеличен размер шрифта */
+            white-space: nowrap; /* Предотвращает перенос текста */
+        }
+        .main_first_sec_h2 {
+            font-size: 72px; /* Увеличен размер шрифта */
+            white-space: nowrap; /* Предотвращает перенос текста */
+        }
+        .main_second_sec {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .main_second_sec_text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .slider {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .slider img.active {
+            opacity: 1;
+        }
+        .slider-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .slider-controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .foreground-gif {
+            position: absolute; /* Изменено с fixed на absolute */
+            top: 500px; /* Изменено для фиксации над текстом "Какие именно?" */
+            left: 0;
+            width: 100%; /* Растягиваем GIF на всю ширину */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+            z-index: 1000; /* Убедитесь, что z-index выше, чем у других элементов */
+        }
+        .game-container {
+            margin: 20px 20px; /* Отступы по бокам в 2 сантиметра */
+            padding: 20px;
+            text-align: center;
+            background-image: url('imgback.png'); /* Фоновое изображение */
+            background-size: contain; /* Растягивает изображение, сохраняя пропорции */
+            background-repeat: no-repeat; /* Предотвращает повторение изображения */
+            background-position: center; /* Центрирует изображение */
+            border-radius: 10px;
+        }
+        .game-container h2 {
+            font-size: 48px; /* Увеличен размер шрифта для названия игры */
+            color: white; /* Белый цвет текста */
+        }
+        .question {
+            font-size: 48px; /* Увеличен размер текста */
+            margin-bottom: 20px;
+            color: white; /* Белый цвет текста */
+        }
+        .options button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: white; /* Белый фон для кнопок */
+            border: 2px solid #000;
+            color: black; /* Черный цвет текста */
+        }
+        .pharaoh-image {
+            width: 80%; /* Ширина изображения немного меньше ширины теста */
+            max-width: 600px; /* Максимальная ширина изображения */
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="main_first_sec">
+            <h1 class="main_first_sec_h1">
+                Чудеса
+            </h1>
+            <h2 class="main_first_sec_h2">
+                света
+            </h2>
+        </div>
+        <div class="main_second_sec">
+            <div class="main_second_sec_text">
+                <p class="main_second_sec_text_head">Какие именно?</p>
+                <ol>
+                    <li class="main_li"><a href="The_pyramid_of_Cheops.html">Пирамида Хеопса</a></li>
+                    <li class="main_li"><a href="Hanging Gardens of Semiramis.html">Висячие сады Семирамиды</a></li>
+                    <li class="main_li"><a href="Statue of Zeus in Olympia.html">Статуя Зевса в Олимпии</a></li>
+                    <li class="main_li"><a href="Temple of Artemis.html">Храм Артемиды</a></li>
+                    <li class="main_li"><a href="Mausoleum of the Mausoleum.html">Мавзолей Мавсола</a></li>
+                    <li class="main_li"><a href="Statue of the Colossus of Rhodes.html">Статуя Колосса Родосского</a></li>
+                    <li class="main_li"><a href="The Lighthouse of Alexandria.html">Александрийский маяк</a></li>
+                </ol>
+            </div>
+            <div class="slider">
+                <img src="image1.jpg" class="active">
+                <img src="image2.jpg">
+                <img src="image3.jpg">
+                <div class="slider-controls">
+                    <button id="prevBtn">Предыдущее</button>
+                    <button id="nextBtn">Следующее</button>
+                </div>
+            </div>
+        </div>
+        <div class="main_third_sec">
+            <p class="main_third_sec_text1">
+                <span class="main_third_sec_head">Семь чудес света</span> – это рукотворные древние сооружения, которые многие тысячелетия поражают людей своими масштабами и искусной архитектурой.
+                Первый список составил ещё древнегреческий историк Геродот, правда, в него входили лишь три сооружения. Более привычный нам список из семи локаций описал греческий поэт Антипатр Сидонский во II веке до нашей эры
+            <p class="main_third_sec_text2"> Где находились? </p>
+            <img src="map.png" class="main_third_sec_img">
+        </div>
+    </main>
+    <img src="foreground.gif" alt="Foreground GIF" class="foreground-gif">
+    <div class="game-container">
+        <h2>Игра "Фараон и чудеса света"</h2>
+        <img src="pharaoh.webp" alt="Фараон" class="pharaoh-image">
+        <div class="question" id="question"></div>
+        <div class="options" id="options"></div>
+    </div>
+    <script>
+        const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slider img');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        let interval;
+
+        function startAutoSlide() {
+            interval = setInterval(() => {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            }, 3000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(interval);
+        }
+
+        function updateSlider() {
+            images.forEach(img => img.classList.remove('active'));
+            images[currentIndex].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            updateSlider();
+            stopAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+            stopAutoSlide();
+        });
+
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        startAutoSlide();
+
+        // Игра "Фараон и чудеса света"
+        const wonders = [
+            "Пирамида Хеопса",
+            "Висячие сады Семирамиды",
+            "Статуя Зевса в Олимпии",
+            "Храм Артемиды",
+            "Мавзолей Мавсола",
+            "Статуя Колосса Родосского",
+            "Александрийский маяк"
+        ];
+
+        let currentWonderIndex = 0;
+        let questions = [
+            "Это чудо света находится в Египте?",
+            "Это чудо света связано с водой?",
+            "Это чудо света связано с богом Зевсом?",
+            "Это чудо света находится в Азии?",
+            "Это чудо света связано с мавзолеем?",
+            "Это чудо света находится на острове Родос?",
+            "Это чудо света связано с маяком?"
+        ];
+
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+
+        function askQuestion() {
+            if (currentWonderIndex >= wonders.length) {
+                questionElement.textContent = "Я не знаю такого чуда света!";
+                optionsElement.innerHTML = "";
+                return;
+            }
+
+            questionElement.textContent = questions[currentWonderIndex];
+            optionsElement.innerHTML = `
+                <button onclick="answerQuestion(true)">Да</button>
+                <button onclick="answerQuestion(false)">Нет</button>
+            `;
+        }
+
+        function answerQuestion(answer) {
+            if (answer) {
+                questionElement.textContent = `Это чудо света - ${wonders[currentWonderIndex]}?`;
+                optionsElement.innerHTML = `
+                    <button onclick="confirmWonder(true)">Да</button>
+                    <button onclick="confirmWonder(false)">Нет</button>
+                `;
+            } else {
+                currentWonderIndex++;
+                askQuestion();
+            }
+        }
+
+        function confirmWonder(answer) {
+            if (answer) {
+                questionElement.textContent = `Я угадал! Это чудо света - ${wonders[currentWonderIndex]}!`;
+                optionsElement.innerHTML = "";
+            } else {
+                currentWonderIndex++;
+                askQuestion();
+            }
+        }
+
+        askQuestion();
+    </script>
+</body>
+</html>
